@@ -1,13 +1,14 @@
-import requests
 import mimetypes
 from random import randint
 from time import time
 from typing import Union
+
+import requests
 from marshmallow import Schema, MarshalResult
 from schemas.ErrorSchema import ErrorSchema
+from schemas.MessageSchema import MessageSchema
 from schemas.UpdateSchema import UpdateSchema
 from schemas.UserSchema import UserSchema
-from schemas.MessageSchema import MessageSchema
 
 
 class TelegramBotApi:

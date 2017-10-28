@@ -12,7 +12,7 @@ for update in updates:
     print(update)
 ```
 
-Result:
+There is result:
 ```python
 {'text': 'Hi!', 'chat': {'first_name': 'Bob', 'id': 62490, 'last_name': 'Smith', 'username': 'BobSmith', 'type': 'private'}, 'date': 1509095664, 'message_id': 7}
 ```
