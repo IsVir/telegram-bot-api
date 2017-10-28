@@ -26,7 +26,7 @@ class TelegramBotApi:
         :param timeout: Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling.
         :param allowed_updates: List the types of updates you want your bot to receive. For example, specify [“message”,
             “edited_channel_post”, “callback_query”] to only receive updates of these types.
-        :return:
+        :return: list of updates
         """
         url = self.__get_api_url('getUpdates')
         data = {
