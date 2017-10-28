@@ -5,3 +5,4 @@ example*
 .pypirc
 setup.py
 setup.cfg
+LICENSE.txt
