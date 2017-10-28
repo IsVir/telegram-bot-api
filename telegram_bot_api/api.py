@@ -9,6 +9,7 @@ from .schemas.ErrorSchema import ErrorSchema
 from .schemas.MessageSchema import MessageSchema
 from .schemas.UpdateSchema import UpdateSchema
 from .schemas.UserSchema import UserSchema
+from .schemas.WebhookSchema import WebhookSchema
 
 
 class TelegramBotApi:
@@ -38,6 +39,26 @@ class TelegramBotApi:
         }
 
         result = self.__request(url, data, UpdateSchema(many=True))
+
+        return result.data
+
+    def set_webhook(self, webhook_url: str,
+                    certificate: str = None,
+                    max_connections: int = 40,
+                    allowed_updates: list = None):
+        url = self.__get_api_url('setWebhook')
+        data = {
+            'url': webhook_url,
+            'max_connections': max_connections,
+        }
+
+        if isinstance(allowed_updates, list) and len(allowed_updates) > 0:
+            data['allowed_updates'] = allowed_updates
+
+        if certificate is not None:
+            raise NotImplementedError('Working with certificate not implemented yer')
+
+        result = self.__request(url, data, WebhookSchema(), raw=True)
 
         return result.data
 
@@ -244,7 +265,7 @@ class TelegramBotApi:
         return '%s%s/%s' % (TelegramBotApi.API_FILE_URL_PART, self.__access_token, file_path)
 
     @staticmethod
-    def __request(url: str, data: dict, schema: Schema, files: dict = None) -> MarshalResult:
+    def __request(url: str, data: dict, schema: Schema, files: dict = None, raw: bool = False) -> MarshalResult:
         """
         :raise RequestFiledException: If has no 'ok' field in response, or status code != 200
         """
@@ -263,7 +284,11 @@ class TelegramBotApi:
             data = response.json()
 
             if 'ok' in data and data['ok'] is True:
-                result = data['result']
+                if raw is True:
+                    result = data
+                else:
+                    result = data['result']
+
                 marshal_result = schema.load(result)
         else:
             data = response.json()

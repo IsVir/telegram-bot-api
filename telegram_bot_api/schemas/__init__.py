@@ -29,5 +29,5 @@ from . import PreCheckoutQuerySchema
 from . import ErrorSchema
 from . import InlineKeyboardButtonSchema
 from . import InlineKeyboardMarkupSchema
-
+from . import WebhookSchema
 

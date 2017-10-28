@@ -6,3 +6,4 @@ example*
 setup.py
 setup.cfg
 LICENSE.txt
+*.pyc
