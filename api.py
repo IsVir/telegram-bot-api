@@ -43,6 +43,7 @@ class TelegramBotApi:
     def get_me(self) -> dict:
         """
         A simple method for testing your bot's auth token.
+        :return: dict
         """
         url = self.__get_api_url('getMe')
         result = self.__request(url, {}, UserSchema())
@@ -67,7 +68,7 @@ class TelegramBotApi:
         :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
         :param reply_to_message_id: If the message is a reply, ID of the original message.
         :param reply_markup: Additional interface options.
-        :return:
+        :return: dict
         """
         url = self.__get_api_url('sendMessage')
         data = {
@@ -106,8 +107,7 @@ class TelegramBotApi:
         :param photo: Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers
             (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new
             photo by passing full path to file as a String
-        :param caption:
-            Photo caption (may also be used when resending photos by file_id), 0-200 characters
+        :param caption: Photo caption (may also be used when resending photos by file_id), 0-200 characters
         :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
         :param reply_to_message_id: If the message is a reply, ID of the original message.
         :param reply_markup: Additional interface options.
@@ -161,8 +161,7 @@ class TelegramBotApi:
         :param audio: Audio file to send. Pass a file_id as String to send a audio file that exists on the Telegram
             servers (recommended), pass an HTTP URL as a String for Telegram to get a audio file from the Internet, or
             upload a new audio file by passing full path to file as a String
-        :param caption:
-            Photo caption (may also be used when resending photos by file_id), 0-200 characters
+        :param caption: Audio caption (may also be used when resending photos by file_id), 0-200 characters
         :param duration: Duration of the audio in seconds.
         :param performer: Performer
         :param title: Track name
@@ -223,7 +222,7 @@ class TelegramBotApi:
             the format @channelusername)
         :param message_id: Message identifier in the chat specified in from_chat_id
         :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
-        :return:
+        :return: dict
         """
         url = self.__get_api_url('forwardMessage')
         data = {
