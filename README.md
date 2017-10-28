@@ -33,6 +33,20 @@ There is result:
 :return: list of updates
 ```
 
+**set_webhook** - use this method to specify a url and receive incoming updates via an outgoing webhook.
+```pydocstring
+:param webhook_url: HTTPS url to send updates to. Use an empty string to remove webhook integration
+:param certificate: Upload your public key certificate so that the root certificate in use can be checked.
+:param max_connections: Maximum allowed number of simultaneous HTTPS connections to the webhook for update
+    delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot‘s server, and higher values
+    to increase your bot’s throughput.
+:param allowed_updates: List the types of updates you want your bot to receive. For example, specify
+    [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types.
+:return: dict
+```
+
+**delete_webhook** - Use this method to delete previously mentioned webhook
+
 **get_me** - a simple method for testing your bot's auth token.
 ```pydocstring
 :return: dict

@@ -46,6 +46,18 @@ class TelegramBotApi:
                     certificate: str = None,
                     max_connections: int = 40,
                     allowed_updates: list = None):
+        """
+        Use this method to specify a url and receive incoming updates via an outgoing webhook.
+
+        :param webhook_url: HTTPS url to send updates to. Use an empty string to remove webhook integration
+        :param certificate: Upload your public key certificate so that the root certificate in use can be checked.
+        :param max_connections: Maximum allowed number of simultaneous HTTPS connections to the webhook for update
+            delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot‘s server, and higher values
+            to increase your bot’s throughput.
+        :param allowed_updates: List the types of updates you want your bot to receive. For example, specify
+            [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types.
+        :return: dict
+        """
         url = self.__get_api_url('setWebhook')
         data = {
             'url': webhook_url,
@@ -61,6 +73,13 @@ class TelegramBotApi:
         result = self.__request(url, data, WebhookSchema(), raw=True)
 
         return result.data
+
+    def delete_webhook(self):
+        """
+        Use this method to delete previously mentioned webhook
+        :return:
+        """
+        return self.set_webhook('')
 
     def get_me(self) -> dict:
         """
