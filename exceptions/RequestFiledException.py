@@ -1,0 +1,2 @@
+class RequestFiledException(BaseException):
+    pass
