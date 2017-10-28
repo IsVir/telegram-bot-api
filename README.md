@@ -1,4 +1,4 @@
-# telegram-bot-api
+# Telegram Bot Api
 Module for working with Telegram Bot API
 
 ## Installation
@@ -8,7 +8,7 @@ git clone https://github.com/IsVir/telegram-bot-api .
 
 ## Simple code
 ```python
-from telegram-bot-api.api import TelegramBotApi
+from telegram_bot_api.api import TelegramBotApi
 
 api = TelegramBotApi('bot-access-token-here')
 updates = api.get_updates()
