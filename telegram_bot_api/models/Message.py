@@ -111,18 +111,21 @@ class Message:
         :param limit: Limit of commands to return (default: unlimited)
         :return: List of commands or empty list
         """
-        commands = []
+        return self.__get_textual_entities__(self.__commands__, limit)
 
-        for command in self.__commands__:
+    def __get_textual_entities__(self, entities: List[MessageEntity], limit: int= None) -> List[str]:
+        textual_entities = []
+
+        for entity in entities:
             if limit is not None:
                 if limit > 0:
                     limit -= 1
                 else:
                     break
 
-            commands.append(self.text[command.offset:command.offset+command.length])
+            textual_entities.append(self.text[entity.offset:entity.offset+entity.length])
 
-        return commands
+        return textual_entities
 
     def __prepare_builtin_entities__(self):
         self.__commands__ = []
