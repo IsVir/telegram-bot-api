@@ -86,7 +86,7 @@ class Message:
         self.invoice = invoice
         self.successful_payment = successful_payment
 
-        self.__load_entities__()
+        self.__prepare_builtin_entities__()
 
     def get_text(self) -> str:
         """
@@ -124,12 +124,39 @@ class Message:
 
         return commands
 
-    def __load_entities__(self):
+    def __prepare_builtin_entities__(self):
         self.__commands__ = []
+        self.__hashtags__ = []
+        self.__urls__ = []
+        self.__emails__ = []
+        self.__bold_text__ = []
+        self.__italice_text__ = []
+        self.__code_blocks__ = []
+        self.__pre_blocks__ = []
+        self.__text_links__ = []
+        self.__text_mentions__ = []
 
         for entity in self.entities:
-            if entity.is_type(MessageEntity.TYPE_COMMAND):
+            if entity.is_type(MessageEntity.AVAILABLE_TYPES['COMMAND']):
                 self.__commands__.append(entity)
+            elif entity.is_type(MessageEntity.AVAILABLE_TYPES['HASHTAG']):
+                self.__hashtags__.append(entity)
+            elif entity.is_type(MessageEntity.AVAILABLE_TYPES['URL']):
+                self.__urls__.append(entity)
+            elif entity.is_type(MessageEntity.AVAILABLE_TYPES['EMAIL']):
+                self.__emails__.append(entity)
+            elif entity.is_type(MessageEntity.AVAILABLE_TYPES['BOLD']):
+                self.__bold_text__.append(entity)
+            elif entity.is_type(MessageEntity.AVAILABLE_TYPES['ITALICE']):
+                self.__italice_text__.append(entity)
+            elif entity.is_type(MessageEntity.AVAILABLE_TYPES['CODE']):
+                self.__code_blocks__.append(entity)
+            elif entity.is_type(MessageEntity.AVAILABLE_TYPES['PRE']):
+                self.__pre_blocks__.append(entity)
+            elif entity.is_type(MessageEntity.AVAILABLE_TYPES['TEXT_LINK']):
+                self.__text_links__.append(entity)
+            elif entity.is_type(MessageEntity.AVAILABLE_TYPES['TEXT_MENTIONS']):
+                self.__text_mentions__.append(entity)
 
     def __repr__(self):
         return '<%s(id=%d)>' % (

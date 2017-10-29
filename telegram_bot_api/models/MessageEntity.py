@@ -1,5 +1,16 @@
 class MessageEntity:
-    TYPE_COMMAND = 'bot_command'
+    AVAILABLE_TYPES = {
+        'COMMAND': 'bot_command',
+        'HASHTAG': 'hashtag',
+        'URL': 'url',
+        'EMAIL': 'email',
+        'BOLD': 'bold',
+        'ITALICE': 'italic',
+        'CODE': 'code',
+        'PRE': 'pre',
+        'TEXT_LINK': 'text_link',
+        'TEXT_MENTIONS': 'text_mention',
+    }
 
     def __init__(self, type,
                  offset,
