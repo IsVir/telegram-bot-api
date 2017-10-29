@@ -113,6 +113,159 @@ class Message:
         """
         return self.__get_textual_entities__(self.__commands__, limit)
 
+    def has_hashtags(self) -> bool:
+        """
+        Use this method to find out if there is a hashtags in the message
+
+        :return: If has hashtags return True
+        """
+        return True if len(self.__hashtags__) > 0 else False
+
+    def get_hashtags(self, limit: int=None) -> List[str]:
+        """
+        Use this method to get hashtags from message
+
+        :param limit: Limit of hashtags to return (default: unlimited)
+        :return: List of hashtags or empty list
+        """
+        return self.__get_textual_entities__(self.__hashtags__, limit)
+
+    def has_urls(self) -> bool:
+        """
+        Use this method to find out if there is a urls in the message
+
+        :return: If has urls return True
+        """
+        return True if len(self.__urls__) > 0 else False
+
+    def get_urls(self, limit: int=None) -> List[str]:
+        """
+        Use this method to get urls from message
+
+        :param limit: Limit of urls to return (default: unlimited)
+        :return: List of urls or empty list
+        """
+        return self.__get_textual_entities__(self.__urls__, limit)
+    
+    def has_emails(self) -> bool:
+        """
+        Use this method to find out if there is a emails in the message
+
+        :return: If has emails return True
+        """
+        return True if len(self.__emails__) > 0 else False
+
+    def get_emails(self, limit: int=None) -> List[str]:
+        """
+        Use this method to get emails from message
+
+        :param limit: Limit of emails to return (default: unlimited)
+        :return: List of emails or empty list
+        """
+        return self.__get_textual_entities__(self.__emails__, limit)
+    
+    def has_bold_text(self) -> bool:
+        """
+        Use this method to find out if there is a bold text in the message
+
+        :return: If has bold text return True
+        """
+        return True if len(self.__bold_text__) > 0 else False
+
+    def get_bold_text(self, limit: int=None) -> List[str]:
+        """
+        Use this method to get bold text from message
+
+        :param limit: Limit of bold text to return (default: unlimited)
+        :return: List of bold text or empty list
+        """
+        return self.__get_textual_entities__(self.__bold_text__, limit)
+
+    def has_italice_text(self) -> bool:
+        """
+        Use this method to find out if there is a italice text in the message
+
+        :return: If has italice text return True
+        """
+        return True if len(self.__italice_text__) > 0 else False
+
+    def get_italice_text(self, limit: int=None) -> List[str]:
+        """
+        Use this method to get italice text from message
+
+        :param limit: Limit of italice text to return (default: unlimited)
+        :return: List of italice text or empty list
+        """
+        return self.__get_textual_entities__(self.__italice_text__, limit)
+    
+    def has_code_blocks(self) -> bool:
+        """
+        Use this method to find out if there is a code blocks in the message
+
+        :return: If has code blocks return True
+        """
+        return True if len(self.__code_blocks__) > 0 else False
+
+    def get_code_blocks(self, limit: int=None) -> List[str]:
+        """
+        Use this method to get code blocks from message
+
+        :param limit: Limit of code blocks to return (default: unlimited)
+        :return: List of code blocks or empty list
+        """
+        return self.__get_textual_entities__(self.__code_blocks__, limit)
+
+    def has_pre_blocks(self) -> bool:
+        """
+        Use this method to find out if there is a pre blocks in the message
+
+        :return: If has pre blocks return True
+        """
+        return True if len(self.__pre_blocks__) > 0 else False
+
+    def get_pre_blocks(self, limit: int=None) -> List[str]:
+        """
+        Use this method to get pre blocks from message
+
+        :param limit: Limit of pre blocks to return (default: unlimited)
+        :return: List of pre blocks or empty list
+        """
+        return self.__get_textual_entities__(self.__pre_blocks__, limit)
+    
+    def has_text_links(self) -> bool:
+        """
+        Use this method to find out if there is a text links in the message
+
+        :return: If has text links return True
+        """
+        return True if len(self.__text_links__) > 0 else False
+
+    def get_text_links(self, limit: int=None) -> List[str]:
+        """
+        Use this method to get text links from message
+
+        :param limit: Limit of text links to return (default: unlimited)
+        :return: List of text links or empty list
+        """
+        return self.__get_textual_entities__(self.__text_links__, limit)
+
+    def has_text_mentions(self) -> bool:
+        """
+        Use this method to find out if there is a text mentions in the message
+
+        :return: If has text mentions return True
+        """
+        return True if len(self.__text_mentions__) > 0 else False
+
+    def get_text_mentions(self, limit: int=None) -> List[str]:
+        """
+        Use this method to get text mentions from message
+
+        :param limit: Limit of text mentions to return (default: unlimited)
+        :return: List of text mentions or empty list
+        """
+        return self.__get_textual_entities__(self.__text_mentions__, limit)
+
     def __get_textual_entities__(self, entities: List[MessageEntity], limit: int= None) -> List[str]:
         textual_entities = []
 

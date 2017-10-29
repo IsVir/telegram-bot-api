@@ -134,6 +134,17 @@ There is result:
 :return: List of commands or empty list
 ```
 
+The following one-on-one methods are similar to the previous one:
+**has_hashtags**, **get_hashtags**
+**has_urls**, **get_urls**
+**has_emails**, **get_emails**
+**has_bold_text**, **get_bold_text**
+**has_italice_text**, **get_italice_text**
+**has_code_blocks**, **get_code_blocks**
+**has_pre_blocks**, **get_pre_blocks**
+**has_text_links**, **text_links**
+**has_text_mentions**, **get_text_mentions**
+
 ### MessageEntity
 
 ### Update
