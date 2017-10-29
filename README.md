@@ -135,15 +135,15 @@ There is result:
 ```
 
 The following one-on-one methods are similar to the previous one:
-**has_hashtags**, **get_hashtags**
-**has_urls**, **get_urls**
-**has_emails**, **get_emails**
-**has_bold_text**, **get_bold_text**
-**has_italice_text**, **get_italice_text**
-**has_code_blocks**, **get_code_blocks**
-**has_pre_blocks**, **get_pre_blocks**
-**has_text_links**, **text_links**
-**has_text_mentions**, **get_text_mentions**
+**has_hashtags**, **get_hashtags**<br />
+**has_urls**, **get_urls**<br />
+**has_emails**, **get_emails**<br />
+**has_bold_text**, **get_bold_text**<br />
+**has_italice_text**, **get_italice_text**<br />
+**has_code_blocks**, **get_code_blocks**<br />
+**has_pre_blocks**, **get_pre_blocks**<br />
+**has_text_links**, **text_links**<br />
+**has_text_mentions**, **get_text_mentions**<br />
 
 ### MessageEntity
 
