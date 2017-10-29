@@ -1,7 +1,7 @@
-from typing import List
 from telegram_bot_api.models.MessageEntity import MessageEntity
 
 if False:
+    from typing import List
     from telegram_bot_api.models.Chat import Chat
     from telegram_bot_api.models.User import User
 
@@ -20,7 +20,7 @@ class Message:
                  edit_date: int=None,
                  author_signature: str=None,
                  text: str=None,
-                 entities: List['MessageEntity']=[],
+                 entities: 'List[MessageEntity]'=[],
                  caption_entities=None,
                  audio=None,
                  document=None,
@@ -106,7 +106,7 @@ class Message:
         """
         return True if len(self.__commands__) > 0 else False
 
-    def get_commands(self, limit: int=None) -> List[str]:
+    def get_commands(self, limit: int=None) -> 'List[str]':
         """
         Use this method to get commands from message
 
@@ -123,7 +123,7 @@ class Message:
         """
         return True if len(self.__hashtags__) > 0 else False
 
-    def get_hashtags(self, limit: int=None) -> List[str]:
+    def get_hashtags(self, limit: int=None) -> 'List[str]':
         """
         Use this method to get hashtags from message
 
@@ -140,7 +140,7 @@ class Message:
         """
         return True if len(self.__urls__) > 0 else False
 
-    def get_urls(self, limit: int=None) -> List[str]:
+    def get_urls(self, limit: int=None) -> 'List[str]':
         """
         Use this method to get urls from message
 
@@ -157,7 +157,7 @@ class Message:
         """
         return True if len(self.__emails__) > 0 else False
 
-    def get_emails(self, limit: int=None) -> List[str]:
+    def get_emails(self, limit: int=None) -> 'List[str]':
         """
         Use this method to get emails from message
 
@@ -174,7 +174,7 @@ class Message:
         """
         return True if len(self.__bold_text__) > 0 else False
 
-    def get_bold_text(self, limit: int=None) -> List[str]:
+    def get_bold_text(self, limit: int=None) -> 'List[str]':
         """
         Use this method to get bold text from message
 
@@ -191,7 +191,7 @@ class Message:
         """
         return True if len(self.__italice_text__) > 0 else False
 
-    def get_italice_text(self, limit: int=None) -> List[str]:
+    def get_italice_text(self, limit: int=None) -> 'List[str]':
         """
         Use this method to get italice text from message
 
@@ -208,7 +208,7 @@ class Message:
         """
         return True if len(self.__code_blocks__) > 0 else False
 
-    def get_code_blocks(self, limit: int=None) -> List[str]:
+    def get_code_blocks(self, limit: int=None) -> 'List[str]':
         """
         Use this method to get code blocks from message
 
@@ -225,7 +225,7 @@ class Message:
         """
         return True if len(self.__pre_blocks__) > 0 else False
 
-    def get_pre_blocks(self, limit: int=None) -> List[str]:
+    def get_pre_blocks(self, limit: int=None) -> 'List[str]':
         """
         Use this method to get pre blocks from message
 
@@ -242,7 +242,7 @@ class Message:
         """
         return True if len(self.__text_links__) > 0 else False
 
-    def get_text_links(self, limit: int=None) -> List[str]:
+    def get_text_links(self, limit: int=None) -> 'List[str]':
         """
         Use this method to get text links from message
 
@@ -259,7 +259,7 @@ class Message:
         """
         return True if len(self.__text_mentions__) > 0 else False
 
-    def get_text_mentions(self, limit: int=None) -> List[str]:
+    def get_text_mentions(self, limit: int=None) -> 'List[str]':
         """
         Use this method to get text mentions from message
 
@@ -268,7 +268,7 @@ class Message:
         """
         return self.__get_textual_entities__(self.__text_mentions__, limit)
 
-    def __get_textual_entities__(self, entities: List['MessageEntity'], limit: int= None) -> List[str]:
+    def __get_textual_entities__(self, entities: 'List[MessageEntity]', limit: int= None) -> 'List[str]':
         textual_entities = []
 
         for entity in entities:
