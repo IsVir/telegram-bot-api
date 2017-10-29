@@ -1,4 +1,6 @@
+from typing import List
 from telegram_bot_api.models.User import User
+from telegram_bot_api.models.MessageEntity import MessageEntity
 
 
 class Message:
@@ -16,7 +18,7 @@ class Message:
                  edit_date: int=None,
                  author_signature: str=None,
                  text: str=None,
-                 entities=None,
+                 entities: List[MessageEntity]=[],
                  caption_entities=None,
                  audio=None,
                  document=None,
@@ -83,6 +85,39 @@ class Message:
         self.pinned_message = pinned_message
         self.invoice = invoice
         self.successful_payment = successful_payment
+
+    def has_commands(self) -> bool:
+        """
+        Use this method to find out if there is a commands in the message
+
+        :return: If has commands return True
+        """
+        if self.entities is not None:
+            for entity in self.entities:
+                return entity.is_type(MessageEntity.TYPE_COMMAND)
+
+        return False
+
+    def get_commands(self, limit: int=None) -> List[str]:
+        """
+        Use this method to get commands from message
+
+        :param limit: Limit of commands to return (default: unlimited)
+        :return: List of commands or empty list
+        """
+        commands = []
+
+        for entity in self.entities:
+            if entity.is_type(MessageEntity.TYPE_COMMAND):
+                if limit is not None:
+                    if limit > 0:
+                        limit -= 1
+                    else:
+                        break
+
+                commands.append(self.text[entity.offset:entity.offset+entity.length])
+
+        return commands
 
     def __repr__(self):
         return '<%s(id=%d)>' % (

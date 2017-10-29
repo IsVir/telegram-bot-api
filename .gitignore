@@ -13,3 +13,4 @@ env/
 telegram_bot_api/__pycache__/
 telegram_bot_api/exceptions/__pycache__/
 telegram_bot_api/utils/__pycache__/
+telegram_bot_api/schemas/__pycache__/

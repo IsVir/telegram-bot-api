@@ -24,7 +24,7 @@ There is result:
 <Update(id=3245)>
 ```
 
-## Available methods
+## API Available methods
 
 **get_updates** - use this method to receive incoming updates.
 ```pydocstring
@@ -114,3 +114,24 @@ There is result:
     with no sound.
 :return: Message
 ```
+
+## Models
+
+### Message
+
+**has_commands** - use this method to find out if there is a commands in the message
+```pydocstring
+:return: If has commands returns True
+```
+
+**get_commands** - use this method to get commands from message
+```pydocstring
+:param limit: Limit of commands to return (default: unlimited)
+:return: List of commands or empty list
+```
+
+### MessageEntity
+
+### Update
+
+### User 
