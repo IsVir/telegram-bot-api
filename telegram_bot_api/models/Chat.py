@@ -1,24 +1,24 @@
 if False:
     from telegram_bot_api.models.Message import Message
+    from telegram_bot_api.models.ChatPhoto import ChatPhoto
 
 
 class Chat:
-    def __init__(self, id: int,
-                 type: str,
+    def __init__(self, chat_id: int,
+                 chat_type: str,
                  title: str=None,
                  username: str=None,
                  first_name: str=None,
                  last_name: str=None,
                  all_members_are_administrators: bool=None,
-                 # @TODO: Прописать типы при появлении соответствующей модели
-                 photo=None,
+                 photo: 'ChatPhoto'=None,
                  description: str=None,
                  invite_link: str=None,
                  pinned_message: 'Message'=None,
                  sticker_set_name: str=None,
                  can_set_sticker_set: bool=None):
-        self.id = id
-        self.type = type
+        self.id = chat_id
+        self.type = chat_type
         self.title = title
         self.username = username
         self.first_name = first_name

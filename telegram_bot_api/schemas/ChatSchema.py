@@ -5,8 +5,10 @@ from telegram_bot_api.schemas.base.ModelSchema import ModelSchema
 class ChatSchema(Schema, ModelSchema):
     __model__ = 'Chat'
 
-    id = fields.Int(required=True)
-    type = fields.Str(required=True, validate=lambda x: x in ['private', 'group', 'supergroup', 'channel'])
+    id = fields.Int(required=True, attribute='chat_id')
+    type = fields.Str(required=True,
+                      attribute='chat_type',
+                      validate=lambda x: x in ['private', 'group', 'supergroup', 'channel'])
     title = fields.Str()
     username = fields.Str()
     first_name = fields.Str()
