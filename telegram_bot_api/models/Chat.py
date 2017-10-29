@@ -35,5 +35,5 @@ class Chat:
         return '<%s(id=%d, type=%s)>' % (
             self.__class__.__name__,
             self.id,
-            self.title
+            self.type
         )
