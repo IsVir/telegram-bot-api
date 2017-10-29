@@ -134,7 +134,7 @@ There is result:
 :return: List of commands or empty list
 ```
 
-The following one-on-one methods are similar to the previous one:
+The following one-on-one methods are similar to the previous one:<br />
 **has_hashtags**, **get_hashtags**<br />
 **has_urls**, **get_urls**<br />
 **has_emails**, **get_emails**<br />
