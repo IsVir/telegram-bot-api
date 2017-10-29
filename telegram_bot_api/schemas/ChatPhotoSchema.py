@@ -1,5 +1,5 @@
 from marshmallow import Schema, fields
-from telegram_bot_api.schemas.base.ModelSchema import ModelSchema
+from .base.ModelSchema import ModelSchema
 
 
 class ChatPhotoSchema(Schema, ModelSchema):
