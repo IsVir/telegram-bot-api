@@ -1,6 +1,8 @@
 # Telegram Bot Api
 Module for working with Telegram Bot API
 
+!!! ATTENTION !!! Project in the active development stage, everything can change every day!
+
 ## Installation
 ```text
 git clone https://github.com/IsVir/telegram-bot-api . 
@@ -19,7 +21,7 @@ for update in updates:
 
 There is result:
 ```python
-<Update(id=3245)
+<Update(id=3245)>
 ```
 
 ## Available methods
