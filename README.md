@@ -117,6 +117,10 @@ There is result:
 
 ## Models
 
+### Chat
+
+### ChatPhoto
+
 ### Message
 **get_text** - use this method to get message text
 ```pydocstring
