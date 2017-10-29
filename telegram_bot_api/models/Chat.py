@@ -1,6 +1,6 @@
 if False:
-    from telegram_bot_api.models.Message import Message
-    from telegram_bot_api.models.ChatPhoto import ChatPhoto
+    from .Message import Message
+    from .ChatPhoto import ChatPhoto
 
 
 class Chat:

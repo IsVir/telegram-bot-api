@@ -1,9 +1,9 @@
-from telegram_bot_api.models.MessageEntity import MessageEntity
+from .MessageEntity import MessageEntity
 
 if False:
     from typing import List
-    from telegram_bot_api.models.Chat import Chat
-    from telegram_bot_api.models.User import User
+    from .Chat import Chat
+    from .User import User
 
 
 class Message:
