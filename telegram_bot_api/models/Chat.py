@@ -32,7 +32,8 @@ class Chat:
         self.can_set_sticker_set = can_set_sticker_set
 
     def __repr__(self):
-        return '<%s(id=%d)>' % (
+        return '<%s(id=%d, type=%s)>' % (
             self.__class__.__name__,
-            self.id
+            self.id,
+            self.title
         )
