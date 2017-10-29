@@ -6,6 +6,3 @@ example*
 .pypirc
 setup.py
 setup.cfg
-.idea/
-__pycache__/
-env/
