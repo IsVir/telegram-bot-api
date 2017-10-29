@@ -118,6 +118,10 @@ There is result:
 ## Models
 
 ### Message
+**get_text** - use this method to get message text
+```pydocstring
+:return: message text
+```
 
 **has_commands** - use this method to find out if there is a commands in the message
 ```pydocstring

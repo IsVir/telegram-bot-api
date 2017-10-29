@@ -86,6 +86,14 @@ class Message:
         self.invoice = invoice
         self.successful_payment = successful_payment
 
+    def get_text(self) -> str:
+        """
+        Use this method to get message text
+
+        :return: message text
+        """
+        return self.text if self.text is not None else ''
+
     def has_commands(self) -> bool:
         """
         Use this method to find out if there is a commands in the message
