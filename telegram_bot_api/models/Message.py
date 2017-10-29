@@ -86,6 +86,8 @@ class Message:
         self.invoice = invoice
         self.successful_payment = successful_payment
 
+        self.__load_entities__()
+
     def get_text(self) -> str:
         """
         Use this method to get message text
@@ -100,11 +102,7 @@ class Message:
 
         :return: If has commands return True
         """
-        if self.entities is not None:
-            for entity in self.entities:
-                return entity.is_type(MessageEntity.TYPE_COMMAND)
-
-        return False
+        return True if len(self.__commands__) > 0 else False
 
     def get_commands(self, limit: int=None) -> List[str]:
         """
@@ -115,17 +113,23 @@ class Message:
         """
         commands = []
 
-        for entity in self.entities:
-            if entity.is_type(MessageEntity.TYPE_COMMAND):
-                if limit is not None:
-                    if limit > 0:
-                        limit -= 1
-                    else:
-                        break
+        for command in self.__commands__:
+            if limit is not None:
+                if limit > 0:
+                    limit -= 1
+                else:
+                    break
 
-                commands.append(self.text[entity.offset:entity.offset+entity.length])
+            commands.append(self.text[command.offset:command.offset+command.length])
 
         return commands
+
+    def __load_entities__(self):
+        self.__commands__ = []
+
+        for entity in self.entities:
+            if entity.is_type(MessageEntity.TYPE_COMMAND):
+                self.__commands__.append(entity)
 
     def __repr__(self):
         return '<%s(id=%d)>' % (
