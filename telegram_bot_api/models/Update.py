@@ -1,12 +1,13 @@
-from .Message import Message
+if False:
+    from .Message import Message
 
 
 class Update:
     def __init__(self, update_id: int,
-                 message: Message=None,
-                 edited_message: Message=None,
-                 channel_post: Message=None,
-                 edited_channel_post: Message=None,
+                 message: 'Message'=None,
+                 edited_message: 'Message'=None,
+                 channel_post: 'Message'=None,
+                 edited_channel_post: 'Message'=None,
                  inline_query=None,
                  chosen_inline_result=None,
                  callback_query=None,
