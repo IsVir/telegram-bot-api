@@ -19,7 +19,7 @@ for update in updates:
 
 There is result:
 ```python
-{'text': 'Hi!', 'chat': {'first_name': 'Bob', 'id': 62490, 'last_name': 'Smith', 'username': 'BobSmith', 'type': 'private'}, 'date': 1509095664, 'message_id': 7}
+<Update(id=3245)
 ```
 
 ## Available methods
@@ -33,7 +33,7 @@ There is result:
 :param allowed_updates: List the types of updates you want your bot to receive. For example, 
     specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these 
     types.
-:return: list of updates
+:return: list of Update objects
 ```
 
 **set_webhook** - use this method to specify a url and receive incoming updates via an outgoing webhook.
@@ -66,7 +66,7 @@ There is result:
     with no sound.
 :param reply_to_message_id: If the message is a reply, ID of the original message.
 :param reply_markup: Additional interface options.
-:return: dict
+:return: Message
 ```
 
 **send_photo** - use this method to send photos.
@@ -80,7 +80,7 @@ There is result:
 :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
 :param reply_to_message_id: If the message is a reply, ID of the original message.
 :param reply_markup: Additional interface options.
-:return: dict
+:return: Message
 ```
 
 **send_audio** - use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .mp3 format. Bots can currently send audio files of up to 50 MB in size
@@ -98,7 +98,7 @@ There is result:
 :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
 :param reply_to_message_id: If the message is a reply, ID of the original message.
 :param reply_markup: Additional interface options.
-:return: dict
+:return: Message
 ``` 
 
 **forward_message** - use this method to forward messages of any kind.
@@ -110,5 +110,5 @@ There is result:
 :param message_id: Message identifier in the chat specified in from_chat_id
 :param disable_notification: Sends the message silently. Users will receive a notification 
     with no sound.
-:return: dict
+:return: Message
 ```

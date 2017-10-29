@@ -2,7 +2,7 @@ import mimetypes
 import requests
 from random import randint
 from time import time
-from typing import Union
+from typing import Union, List
 from marshmallow import Schema, MarshalResult
 
 from .schemas.ErrorSchema import ErrorSchema
@@ -10,6 +10,10 @@ from .schemas.MessageSchema import MessageSchema
 from .schemas.UpdateSchema import UpdateSchema
 from .schemas.UserSchema import UserSchema
 from .schemas.WebhookSchema import WebhookSchema
+
+from .models.Update import Update
+from .models.User import User
+from .models.Message import Message
 
 
 class TelegramBotApi:
@@ -19,7 +23,7 @@ class TelegramBotApi:
     def __init__(self, access_token: str):
         self.__access_token = access_token
 
-    def get_updates(self, offset: int=0, limit: int=100, timeout: int=0, allowed_updates: list=list()) -> list:
+    def get_updates(self, offset: int=0, limit: int=100, timeout: int=0, allowed_updates: list=list()) -> List[Update]:
         """
         Use this method to receive incoming updates
 
@@ -28,7 +32,7 @@ class TelegramBotApi:
         :param timeout: Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling.
         :param allowed_updates: List the types of updates you want your bot to receive. For example, specify [“message”,
             “edited_channel_post”, “callback_query”] to only receive updates of these types.
-        :return: list of updates
+        :return: list of Update objects
         """
         url = self.__get_api_url('getUpdates')
         data = {
@@ -77,14 +81,14 @@ class TelegramBotApi:
     def delete_webhook(self):
         """
         Use this method to delete previously mentioned webhook
-        :return:
+        :return: dict
         """
         return self.set_webhook('')
 
-    def get_me(self) -> dict:
+    def get_me(self) -> User:
         """
         A simple method for testing your bot's auth token.
-        :return: dict
+        :return: User
         """
         url = self.__get_api_url('getMe')
         result = self.__request(url, {}, UserSchema())
@@ -97,7 +101,7 @@ class TelegramBotApi:
                      disable_web_page_preview: bool = False,
                      disable_notification: bool = False,
                      reply_to_message_id: int = None,
-                     reply_markup: str = None) -> dict:
+                     reply_markup: str = None) -> Message:
         """
         Use this method to send text messages.
 
@@ -109,7 +113,7 @@ class TelegramBotApi:
         :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
         :param reply_to_message_id: If the message is a reply, ID of the original message.
         :param reply_markup: Additional interface options.
-        :return: dict
+        :return: Message
         """
         url = self.__get_api_url('sendMessage')
         data = {
@@ -152,7 +156,7 @@ class TelegramBotApi:
         :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
         :param reply_to_message_id: If the message is a reply, ID of the original message.
         :param reply_markup: Additional interface options.
-        :return: dict
+        :return: Message
         """
         url = self.__get_api_url('sendPhoto')
         data = {
@@ -209,7 +213,7 @@ class TelegramBotApi:
         :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
         :param reply_to_message_id: If the message is a reply, ID of the original message.
         :param reply_markup: Additional interface options.
-        :return: dict
+        :return: Message
         """
         url = self.__get_api_url('sendAudio')
         data = {
@@ -263,7 +267,7 @@ class TelegramBotApi:
             the format @channelusername)
         :param message_id: Message identifier in the chat specified in from_chat_id
         :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
-        :return: dict
+        :return: Message
         """
         url = self.__get_api_url('forwardMessage')
         data = {

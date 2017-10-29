@@ -1,9 +1,12 @@
 from marshmallow import Schema, fields
+from telegram_bot_api.schemas.base.ModelSchema import ModelSchema
 
 
-class MessageSchema(Schema):
+class MessageSchema(Schema, ModelSchema):
+    __model__ = 'Message'
+
     message_id = fields.Int(required=True)
-    from_user = fields.Nested('UserSchema', attribute='from')
+    from_user = fields.Nested('UserSchema', load_from='from')
     date = fields.Int(required=True)
     chat = fields.Nested('ChatSchema', required=True)
     forward_from = fields.Nested('UserSchema')
