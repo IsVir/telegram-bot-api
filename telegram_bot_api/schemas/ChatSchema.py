@@ -1,7 +1,10 @@
 from marshmallow import Schema, fields
+from telegram_bot_api.schemas.base.ModelSchema import ModelSchema
 
 
-class ChatSchema(Schema):
+class ChatSchema(Schema, ModelSchema):
+    __model__ = 'Chat'
+
     id = fields.Int(required=True)
     type = fields.Str(required=True, validate=lambda x: x in ['private', 'group', 'supergroup', 'channel'])
     title = fields.Str()

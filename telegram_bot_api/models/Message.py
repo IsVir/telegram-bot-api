@@ -1,24 +1,26 @@
 from typing import List
-from telegram_bot_api.models.User import User
 from telegram_bot_api.models.MessageEntity import MessageEntity
+
+if False:
+    from telegram_bot_api.models.Chat import Chat
+    from telegram_bot_api.models.User import User
 
 
 class Message:
     def __init__(self, message_id: int,
-                 from_user: User,
+                 from_user: 'User',
                  date: int,
-                 chat,
-                 forward_from: User=None,
+                 chat: 'Chat',
+                 forward_from: 'User'=None,
                  forward_from_chat=None,
                  forward_from_message_id: int=None,
                  forward_signature: str=None,
                  forward_date: int=None,
-                 # @TODO: Что делать с типом?
-                 reply_to_message=None,
+                 reply_to_message: 'Message'=None,
                  edit_date: int=None,
                  author_signature: str=None,
                  text: str=None,
-                 entities: List[MessageEntity]=[],
+                 entities: List['MessageEntity']=[],
                  caption_entities=None,
                  audio=None,
                  document=None,
@@ -266,7 +268,7 @@ class Message:
         """
         return self.__get_textual_entities__(self.__text_mentions__, limit)
 
-    def __get_textual_entities__(self, entities: List[MessageEntity], limit: int= None) -> List[str]:
+    def __get_textual_entities__(self, entities: List['MessageEntity'], limit: int= None) -> List[str]:
         textual_entities = []
 
         for entity in entities:
